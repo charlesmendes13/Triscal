@@ -73,24 +73,16 @@ namespace Triscal.Infrastructure.Data.Repository
             }
         }
 
-        public override async Task<Cliente> InsertAsync(Cliente entity)
+        public async Task<Cliente> GetCpfInsertAsync(Cliente cliente)
         {
             try
             {
-                var cpf = await _factory.DbConnection()
+                var result = await _factory.DbConnection()
                     .QueryAsync<Cliente>($"" +
                     $"Select * From Cliente " +                   
-                    $"Where Cpf = '{ entity.Cpf }'");
+                    $"Where Cpf = '{ cliente.Cpf }'");            
 
-                if (cpf.FirstOrDefault() != null)
-                {
-                    return null;
-                }
-
-                await _context.Set<Cliente>().AddAsync(entity);
-                await _context.SaveChangesAsync();
-
-                return entity;
+                return result.FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -98,25 +90,17 @@ namespace Triscal.Infrastructure.Data.Repository
             }
         }
 
-        public override async Task<Cliente> UpdateAsync(Cliente entity)
+        public async Task<Cliente> GetCpfUpdateAsync(Cliente cliente)
         {
             try
             {
-                var cpf = await _factory.DbConnection()
+                var result = await _factory.DbConnection()
                     .QueryAsync<Cliente>($"" +
                     $"Select * From Cliente " +
-                    $"Where Id != '{ entity.Id }' " +
-                    $"And Cpf = '{ entity.Cpf }'");
+                    $"Where Id != '{ cliente.Id }' " +
+                    $"And Cpf = '{ cliente.Cpf }'");
 
-                if (cpf.FirstOrDefault() != null)
-                {
-                    return null;
-                }
-
-                _context.Update(entity);
-                await _context.SaveChangesAsync();
-
-                return entity;
+                return result.FirstOrDefault();
             }
             catch (Exception ex)
             {

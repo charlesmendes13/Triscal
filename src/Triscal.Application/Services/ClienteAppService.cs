@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Triscal.Application.Interfaces;
 using Triscal.Domain.Entities;
 using Triscal.Domain.Interfaces.Services;
@@ -15,6 +16,6 @@ namespace Triscal.Application.Services
             : base(clienteService)
         {
             _clienteService = clienteService;
-        }
+        }       
     }
 }
