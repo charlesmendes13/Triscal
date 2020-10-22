@@ -26,5 +26,7 @@ namespace Triscal.Application.DTO
         [MaxLength(30, ErrorMessage = "O Estado não pode ter mais que 30 caracteres")]
         [RegularExpression(@"^[ a-zA-ZÀ-ú0-9]*$", ErrorMessage = "Digite um Estado válido")]
         public string Estado { get; set; }
+
+        public Guid ClienteId { get; set; }
     }    
 }

@@ -45,7 +45,7 @@ namespace Triscal.Infrastructure.Data.Repository
                 var result = await _factory.DbConnection()
                     .QueryAsync<T>($"" +
                     $"Select * From { typeof(T).Name } " +
-                    $"Where Id = { id }");
+                    $"Where Id = '{ id }'");
 
                 return result.FirstOrDefault();
             }
