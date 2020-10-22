@@ -16,6 +16,7 @@ namespace Triscal.Infrastructure.Data.Mapping
             builder.HasKey(c => c.Id);
             builder.Property(p => p.Nome).HasMaxLength(30).IsRequired();
             builder.Property(p => p.DataNascimento).IsRequired();
+            builder.Property(p => p.Cpf).HasMaxLength(11).IsRequired();
             builder.HasIndex(p => p.Cpf).IsUnique();
         }
     }

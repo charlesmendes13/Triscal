@@ -16,30 +16,6 @@ namespace Triscal.Domain.Services
             : base(clienteRepository)
         {
             _clienteRepository = clienteRepository;
-        }        
-
-        public override async Task<Cliente> InsertAsync(Cliente entity)
-        {
-            var cliente = await _clienteRepository.GetCpfInsertAsync(entity);
-
-            if (cliente != null)
-            {
-                return null;
-            }
-
-            return await _clienteRepository.InsertAsync(entity);
-        }
-
-        public override async Task<Cliente> UpdateAsync(Cliente entity)
-        {
-            var cliente = await _clienteRepository.GetCpfUpdateAsync(entity);
-
-            if (cliente != null)
-            {
-                return null;
-            }
-
-            return await _clienteRepository.UpdateAsync(entity);
         }
     }
 }

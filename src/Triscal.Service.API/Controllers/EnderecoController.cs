@@ -30,10 +30,7 @@ namespace Triscal.Service.API.Controllers
         {
             var enderecos = await _enderecoAppService.GetAllAsync();
 
-            return Ok(new
-            {
-                enderecos = _mapper.Map<List<EnderecoDTO>>(enderecos)
-            });
+            return Ok(_mapper.Map<List<EnderecoDTO>>(enderecos));
         }
 
         // GET api/<EnderecoController>/5
@@ -42,15 +39,12 @@ namespace Triscal.Service.API.Controllers
         {
             var endereco = await _enderecoAppService.GetByIdAsync(id);
 
-            return Ok(new
-            {
-                endereco = _mapper.Map<EnderecoDTO>(endereco)
-            });
+            return Ok(_mapper.Map<EnderecoDTO>(endereco));
         }
 
         // POST api/<EnderecoController>
         [HttpPost]
-        public async Task<ActionResult<EnderecoDTO>> Post(EnderecoInsertDTO enderecoDTO)
+        public async Task<ActionResult<EnderecoDTO>> Post(EnderecoDTO enderecoDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -59,10 +53,7 @@ namespace Triscal.Service.API.Controllers
 
             var endereco = await _enderecoAppService.InsertAsync(_mapper.Map<Endereco>(enderecoDTO));
 
-            return Ok(new
-            {
-                endereco = _mapper.Map<EnderecoDTO>(endereco)
-            });
+            return Ok(_mapper.Map<EnderecoDTO>(endereco));
         }
 
         // PUT api/<EnderecoController>/5
@@ -81,10 +72,7 @@ namespace Triscal.Service.API.Controllers
 
             var endereco = await _enderecoAppService.UpdateAsync(_mapper.Map<Endereco>(enderecoDTO));
 
-            return Ok(new
-            {
-                endereco = _mapper.Map<EnderecoDTO>(endereco)
-            });
+            return Ok(_mapper.Map<EnderecoDTO>(endereco));
         }
 
         // DELETE api/<EnderecoController>/5
@@ -93,10 +81,7 @@ namespace Triscal.Service.API.Controllers
         {
             var endereco = await _enderecoAppService.DeleteAsync(await _enderecoAppService.GetByIdAsync(id));
 
-            return Ok(new
-            {
-                cliente = _mapper.Map<EnderecoDTO>(endereco)
-            });
+            return Ok(_mapper.Map<EnderecoDTO>(endereco));
         }
     }
 }

@@ -73,16 +73,24 @@ namespace Triscal.Infrastructure.Data.Repository
             }
         }
 
-        public async Task<Cliente> GetCpfInsertAsync(Cliente cliente)
+        public override async Task<Cliente> InsertAsync(Cliente entity)
         {
             try
             {
-                var result = await _factory.DbConnection()
+                var cpf = await _factory.DbConnection()
                     .QueryAsync<Cliente>($"" +
-                    $"Select * From Cliente " +                   
-                    $"Where Cpf = '{ cliente.Cpf }'");            
+                    $"Select * From Cliente " +
+                    $"Where Cpf = '{ entity.Cpf }'");
 
-                return result.FirstOrDefault();
+                if (cpf.FirstOrDefault() != null)
+                {
+                    return null;
+                }
+
+                await _context.Set<Cliente>().AddAsync(entity);
+                await _context.SaveChangesAsync();
+
+                return entity;
             }
             catch (Exception ex)
             {
@@ -90,17 +98,25 @@ namespace Triscal.Infrastructure.Data.Repository
             }
         }
 
-        public async Task<Cliente> GetCpfUpdateAsync(Cliente cliente)
+        public override async Task<Cliente> UpdateAsync(Cliente entity)
         {
             try
             {
-                var result = await _factory.DbConnection()
+                var cpf = await _factory.DbConnection()
                     .QueryAsync<Cliente>($"" +
                     $"Select * From Cliente " +
-                    $"Where Id != '{ cliente.Id }' " +
-                    $"And Cpf = '{ cliente.Cpf }'");
+                    $"Where Id != '{ entity.Id }' " +
+                    $"And Cpf = '{ entity.Cpf }'");
 
-                return result.FirstOrDefault();
+                if (cpf.FirstOrDefault() != null)
+                {
+                    return null;
+                }
+
+                _context.Update(entity);
+                await _context.SaveChangesAsync();
+
+                return entity;
             }
             catch (Exception ex)
             {

@@ -30,10 +30,7 @@ namespace Triscal.Service.API.Controllers
         {
             var clientes = await _clienteAppService.GetAllAsync();
 
-            return Ok(new
-            {
-                clientes = _mapper.Map<List<ClienteDTO>>(clientes)
-            });
+            return Ok(_mapper.Map<List<ClienteDTO>>(clientes));
         }
 
         // GET api/<ClienteController>/5
@@ -42,15 +39,12 @@ namespace Triscal.Service.API.Controllers
         {
             var cliente = await _clienteAppService.GetByIdAsync(id);
 
-            return Ok(new
-            {
-                cliente = _mapper.Map<ClienteDTO>(cliente)
-            });
+            return Ok(_mapper.Map<ClienteDTO>(cliente));
         }
 
         // POST api/<ClienteController>
         [HttpPost]
-        public async Task<ActionResult<ClienteDTO>> Post(ClienteInsertDTO clienteDTO)
+        public async Task<ActionResult<ClienteDTO>> Post(ClienteDTO clienteDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -64,10 +58,7 @@ namespace Triscal.Service.API.Controllers
                 return BadRequest("O CPF já existe!");
             }
 
-            return Ok(new
-            {
-                cliente = _mapper.Map<ClienteDTO>(cliente)
-            });
+            return Ok(_mapper.Map<ClienteDTO>(cliente));
         }
 
         // PUT api/<ClienteController>/5
@@ -86,10 +77,7 @@ namespace Triscal.Service.API.Controllers
 
             var cliente = await _clienteAppService.UpdateAsync(_mapper.Map<Cliente>(clienteDTO));
 
-            return Ok(new
-            {
-                cliente = _mapper.Map<ClienteDTO>(cliente)
-            });
+            return Ok(_mapper.Map<ClienteDTO>(cliente));
         }
 
         // DELETE api/<ClienteController>/5
@@ -98,10 +86,7 @@ namespace Triscal.Service.API.Controllers
         {
             var cliente = await _clienteAppService.DeleteAsync(await _clienteAppService.GetByIdAsync(id));
 
-            return Ok(new
-            {
-                cliente = _mapper.Map<ClienteDTO>(cliente)
-            });
+            return Ok(_mapper.Map<ClienteDTO>(cliente));
         }
     }
 }

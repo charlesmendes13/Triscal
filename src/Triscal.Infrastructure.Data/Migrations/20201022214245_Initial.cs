@@ -14,7 +14,7 @@ namespace Triscal.Infrastructure.Data.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Nome = table.Column<string>(maxLength: 30, nullable: false),
                     DataNascimento = table.Column<DateTime>(nullable: false),
-                    Cpf = table.Column<string>(nullable: false)
+                    Cpf = table.Column<string>(maxLength: 11, nullable: false)
                 },
                 constraints: table =>
                 {

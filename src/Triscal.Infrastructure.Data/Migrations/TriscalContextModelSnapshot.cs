@@ -27,7 +27,8 @@ namespace Triscal.Infrastructure.Data.Migrations
 
                     b.Property<string>("Cpf")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(11)")
+                        .HasMaxLength(11);
 
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("datetime2");
