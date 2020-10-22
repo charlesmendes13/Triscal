@@ -6,10 +6,8 @@ using Triscal.Application.Helpers;
 
 namespace Triscal.Application.DTO
 {
-    public class ClienteDTO
+    public class ClienteInsertDTO
     {
-        public Guid Id { get; set; }
-
         [Required(ErrorMessage = "O Nome não pode ser nulo")]
         [MaxLength(30, ErrorMessage = "O Nome não pode ter mais que 30 caracteres")]
         [RegularExpression(@"^[ a-zA-ZÀ-ú]*$", ErrorMessage = "Digite um Nome válido")]
@@ -27,6 +25,6 @@ namespace Triscal.Application.DTO
         [ValidationCPF(ErrorMessage = "O CPF é inválido")]
         public string Cpf { get; set; }
 
-        public EnderecoDTO Endereco { get; set; }
+        public EnderecoInsertDTO Endereco { get; set; }
     }
 }

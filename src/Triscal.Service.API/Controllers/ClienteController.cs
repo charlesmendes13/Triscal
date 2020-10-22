@@ -50,7 +50,7 @@ namespace Triscal.Service.API.Controllers
 
         // POST api/<ClienteController>
         [HttpPost]
-        public async Task<ActionResult<ClienteDTO>> Post(ClienteDTO clienteDTO)
+        public async Task<ActionResult<ClienteDTO>> Post(ClienteInsertDTO clienteDTO)
         {
             if (!ModelState.IsValid)
             {
