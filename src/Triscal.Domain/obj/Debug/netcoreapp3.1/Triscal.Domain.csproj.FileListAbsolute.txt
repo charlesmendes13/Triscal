@@ -1,0 +1,9 @@
+D:\Visual Studio\Triscal\src\Triscal.Domain\bin\Debug\netcoreapp3.1\Triscal.Domain.deps.json
+D:\Visual Studio\Triscal\src\Triscal.Domain\bin\Debug\netcoreapp3.1\Triscal.Domain.dll
+D:\Visual Studio\Triscal\src\Triscal.Domain\bin\Debug\netcoreapp3.1\Triscal.Domain.pdb
+D:\Visual Studio\Triscal\src\Triscal.Domain\obj\Debug\netcoreapp3.1\Triscal.Domain.csprojAssemblyReference.cache
+D:\Visual Studio\Triscal\src\Triscal.Domain\obj\Debug\netcoreapp3.1\Triscal.Domain.AssemblyInfoInputs.cache
+D:\Visual Studio\Triscal\src\Triscal.Domain\obj\Debug\netcoreapp3.1\Triscal.Domain.AssemblyInfo.cs
+D:\Visual Studio\Triscal\src\Triscal.Domain\obj\Debug\netcoreapp3.1\Triscal.Domain.csproj.CoreCompileInputs.cache
+D:\Visual Studio\Triscal\src\Triscal.Domain\obj\Debug\netcoreapp3.1\Triscal.Domain.dll
+D:\Visual Studio\Triscal\src\Triscal.Domain\obj\Debug\netcoreapp3.1\Triscal.Domain.pdb

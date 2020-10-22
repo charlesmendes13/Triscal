@@ -1,0 +1,12 @@
+D:\Visual Studio\Triscal\src\Triscal.Application\bin\Debug\netcoreapp3.1\Triscal.Application.deps.json
+D:\Visual Studio\Triscal\src\Triscal.Application\bin\Debug\netcoreapp3.1\Triscal.Application.dll
+D:\Visual Studio\Triscal\src\Triscal.Application\bin\Debug\netcoreapp3.1\Triscal.Application.pdb
+D:\Visual Studio\Triscal\src\Triscal.Application\bin\Debug\netcoreapp3.1\Triscal.Domain.dll
+D:\Visual Studio\Triscal\src\Triscal.Application\bin\Debug\netcoreapp3.1\Triscal.Domain.pdb
+D:\Visual Studio\Triscal\src\Triscal.Application\obj\Debug\netcoreapp3.1\Triscal.Application.csprojAssemblyReference.cache
+D:\Visual Studio\Triscal\src\Triscal.Application\obj\Debug\netcoreapp3.1\Triscal.Application.AssemblyInfoInputs.cache
+D:\Visual Studio\Triscal\src\Triscal.Application\obj\Debug\netcoreapp3.1\Triscal.Application.AssemblyInfo.cs
+D:\Visual Studio\Triscal\src\Triscal.Application\obj\Debug\netcoreapp3.1\Triscal.Application.csproj.CopyComplete
+D:\Visual Studio\Triscal\src\Triscal.Application\obj\Debug\netcoreapp3.1\Triscal.Application.dll
+D:\Visual Studio\Triscal\src\Triscal.Application\obj\Debug\netcoreapp3.1\Triscal.Application.pdb
+D:\Visual Studio\Triscal\src\Triscal.Application\obj\Debug\netcoreapp3.1\Triscal.Application.csproj.CoreCompileInputs.cache
