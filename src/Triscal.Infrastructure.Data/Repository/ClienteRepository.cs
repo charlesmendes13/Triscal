@@ -72,5 +72,56 @@ namespace Triscal.Infrastructure.Data.Repository
                 throw ex;
             }
         }
+
+        public override async Task<Cliente> InsertAsync(Cliente entity)
+        {
+            try
+            {
+                var cpf = await _factory.DbConnection()
+                    .QueryAsync<Cliente>($"" +
+                    $"Select * From Cliente " +                   
+                    $"Where Cpf = '{ entity.Cpf }'");
+
+                if (cpf.FirstOrDefault() != null)
+                {
+                    return null;
+                }
+
+                await _context.Set<Cliente>().AddAsync(entity);
+                await _context.SaveChangesAsync();
+
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public override async Task<Cliente> UpdateAsync(Cliente entity)
+        {
+            try
+            {
+                var cpf = await _factory.DbConnection()
+                    .QueryAsync<Cliente>($"" +
+                    $"Select * From Cliente " +
+                    $"Where Id != '{ entity.Id }' " +
+                    $"And Cpf = '{ entity.Cpf }'");
+
+                if (cpf.FirstOrDefault() != null)
+                {
+                    return null;
+                }
+
+                _context.Update(entity);
+                await _context.SaveChangesAsync();
+
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

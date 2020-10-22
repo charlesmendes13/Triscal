@@ -23,7 +23,7 @@ namespace Triscal.Service.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostEnvironment env)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;            
         }

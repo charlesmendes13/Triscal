@@ -7,6 +7,8 @@ namespace Triscal.Application.DTO
 {
     public class EnderecoDTO
     {
+        public Guid? Id { get; set; }
+
         [Required(ErrorMessage = "O Logradouro não pode ser nulo")]
         [MaxLength(50, ErrorMessage = "O Logradouro não pode ter mais que 50 caracteres")]
         [RegularExpression(@"^[ a-zA-ZÀ-ú0-9 ,-]*$", ErrorMessage = "Digite um Logradouro válido")]
