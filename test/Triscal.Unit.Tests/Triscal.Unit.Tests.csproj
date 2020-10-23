@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\src\Triscal.Application\Triscal.Application.csproj" />
     <ProjectReference Include="..\..\src\Triscal.Domain\Triscal.Domain.csproj" />
     <ProjectReference Include="..\..\src\Triscal.Infrastructure.Data\Triscal.Infrastructure.Data.csproj" />
