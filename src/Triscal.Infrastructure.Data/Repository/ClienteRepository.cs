@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,20 +8,16 @@ using System.Threading.Tasks;
 using Triscal.Domain.Entities;
 using Triscal.Domain.Interfaces.Repository;
 using Triscal.Infrastructure.Data.Context;
-using Triscal.Infrastructure.Data.Factory;
 
 namespace Triscal.Infrastructure.Data.Repository
 {
     public class ClienteRepository : BaseRepository<Cliente>, IClienteRepository
     {
-        private readonly TriscalFactory _factory;
         private readonly TriscalContext _context;
 
-        public ClienteRepository(TriscalFactory factory,
-            TriscalContext context)
-            : base(factory, context)
+        public ClienteRepository(TriscalContext context)
+            : base(context)
         {
-            _factory = factory;
             _context = context;
         }
 
@@ -28,19 +25,16 @@ namespace Triscal.Infrastructure.Data.Repository
         {
             try
             {
-                var result = await _factory.DbConnection()
-                    .QueryAsync<Cliente, Endereco, Cliente>($"" +
-                    $"Select * From Cliente " +
-                    $"Left Join Endereco On Cliente.Id = Endereco.ClienteId " +
-                    $"", map: (cliente, endereco) =>
-                    {                       
-                        if (endereco != null)
-                            cliente.Endereco = endereco;
-
-                        return cliente;
-                    });
-
-                return result.ToList();
+                return await _context.Cliente
+                    .Select(c => new Cliente
+                    {
+                        Id = c.Id,
+                        Nome = c.Nome,
+                        DataNascimento = c.DataNascimento,
+                        Cpf = c.Cpf, 
+                        Endereco = c.Endereco                       
+                    })
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -52,20 +46,17 @@ namespace Triscal.Infrastructure.Data.Repository
         {
             try
             {
-                var result = await _factory.DbConnection()
-                    .QueryAsync<Cliente, Endereco, Cliente>($"" +
-                    $"Select * From Cliente " +
-                    $"Left Join Endereco On Cliente.Id = Endereco.ClienteId " +
-                    $"Where Cliente.Id = '{ id }'" +
-                    $"", map: (cliente, endereco) =>
+                return await _context.Cliente
+                    .Where(x => x.Id == Guid.Parse(id.ToString()))
+                    .Select(c => new Cliente
                     {
-                        if (endereco != null)
-                            cliente.Endereco = endereco;
-
-                        return cliente;
-                    });
-
-                return result.FirstOrDefault();
+                        Id = c.Id,
+                        Nome = c.Nome,
+                        DataNascimento = c.DataNascimento,
+                        Cpf = c.Cpf,
+                        Endereco = c.Endereco
+                    })
+                    .FirstOrDefaultAsync();
             }
             catch (Exception ex)
             {
@@ -77,12 +68,10 @@ namespace Triscal.Infrastructure.Data.Repository
         {
             try
             {
-                var cpf = await _factory.DbConnection()
-                    .QueryAsync<Cliente>($"" +
-                    $"Select * From Cliente " +
-                    $"Where Cpf = '{ entity.Cpf }'");
+                var cpf = await _context.Cliente
+                    .FirstOrDefaultAsync(x => x.Cpf == entity.Cpf);
 
-                if (cpf.FirstOrDefault() != null)
+                if (cpf != null)
                 {
                     return null;
                 }
@@ -102,13 +91,10 @@ namespace Triscal.Infrastructure.Data.Repository
         {
             try
             {
-                var cpf = await _factory.DbConnection()
-                    .QueryAsync<Cliente>($"" +
-                    $"Select * From Cliente " +
-                    $"Where Id != '{ entity.Id }' " +
-                    $"And Cpf = '{ entity.Cpf }'");
+                var cpf = await _context.Cliente
+                    .FirstOrDefaultAsync(x => x.Id != entity.Id && x.Cpf == entity.Cpf);
 
-                if (cpf.FirstOrDefault() != null)
+                if (cpf != null)
                 {
                     return null;
                 }

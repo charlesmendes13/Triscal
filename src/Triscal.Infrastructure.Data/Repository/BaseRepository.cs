@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,19 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Triscal.Domain.Interfaces.Repository;
 using Triscal.Infrastructure.Data.Context;
-using Triscal.Infrastructure.Data.Factory;
 
 namespace Triscal.Infrastructure.Data.Repository
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        private readonly TriscalFactory _factory;
         private readonly TriscalContext _context;
 
-        public BaseRepository(TriscalFactory factory,
-            TriscalContext context)
+        public BaseRepository(TriscalContext context)
         {
-            _factory = factory;
             _context = context;
         }
 
@@ -26,11 +23,7 @@ namespace Triscal.Infrastructure.Data.Repository
         {
             try
             {
-                var result = await _factory.DbConnection()
-                    .QueryAsync<T>($"" +
-                    $"Select * From { typeof(T).Name }");
-
-                return result.ToList();
+                return await _context.Set<T>().ToListAsync();
             }
             catch (Exception ex)
             {
@@ -42,12 +35,7 @@ namespace Triscal.Infrastructure.Data.Repository
         {
             try
             {
-                var result = await _factory.DbConnection()
-                    .QueryAsync<T>($"" +
-                    $"Select * From { typeof(T).Name } " +
-                    $"Where Id = '{ id }'");
-
-                return result.FirstOrDefault();
+                return await _context.Set<T>().FindAsync(id);
             }
             catch (Exception ex)
             {

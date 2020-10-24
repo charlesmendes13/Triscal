@@ -40,13 +40,7 @@ namespace Triscal.Service.API
 
             services.AddDbContextPool<TriscalContext>(option =>
                  option.UseSqlServer(connectionString)
-             );
-
-            // Factory
-
-            services.AddTransient<IDbConnection>(db =>
-                new SqlConnection(connectionString)
-            );
+             );            
 
             // IoC
 

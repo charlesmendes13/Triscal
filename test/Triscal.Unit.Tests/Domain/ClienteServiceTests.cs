@@ -4,18 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Triscal.Domain.Entities;
+using Triscal.Domain.Interfaces.Repository;
 using Triscal.Domain.Interfaces.Services;
+using Triscal.Domain.Services;
 using Xunit;
 
 namespace Triscal.Unit.Tests.Domain
 {
     public class ClienteServiceTests
     {
-        private readonly Mock<IClienteService> _clienteService;
-
+       
         public ClienteServiceTests()
-        {
-            _clienteService = new Mock<IClienteService>();
+        {            
         }
 
         [Fact]
@@ -74,13 +74,16 @@ namespace Triscal.Unit.Tests.Domain
                 }
             };
 
-            _clienteService.Setup(r => r.GetAllAsync()).ReturnsAsync(clientes);
+            // Moq
+            var clienteRepository = new Mock<IClienteRepository>();
+            clienteRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(clientes);
 
             // Act
-            var result = await _clienteService.Object.GetAllAsync();
+            var clienteService = new ClienteService(clienteRepository.Object);
+            var result = await clienteService.GetAllAsync();
 
             // Assert
-            result.Should().HaveCount(3);
+            result.Should().HaveCount(3);          
         }
 
         [Fact]
@@ -105,10 +108,12 @@ namespace Triscal.Unit.Tests.Domain
             };
 
             // Moq
-            _clienteService.Setup(r => r.GetByIdAsync(Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66"))).ReturnsAsync(cliente);
+            var clienteRepository = new Mock<IClienteRepository>();
+            clienteRepository.Setup(x => x.GetByIdAsync(cliente.Id)).ReturnsAsync(cliente);
 
             // Act
-            var result = await _clienteService.Object.GetByIdAsync(Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66"));
+            var clienteService = new ClienteService(clienteRepository.Object);
+            var result = await clienteService.GetByIdAsync(cliente.Id);
 
             // Assert
             result.Should().Be(cliente);
@@ -133,10 +138,12 @@ namespace Triscal.Unit.Tests.Domain
             };
 
             // Moq
-            _clienteService.Setup(r => r.InsertAsync(cliente)).ReturnsAsync(cliente);
+            var clienteRepository = new Mock<IClienteRepository>();
+            clienteRepository.Setup(x => x.InsertAsync(cliente)).ReturnsAsync(cliente);
 
             // Act
-            var result = await _clienteService.Object.InsertAsync(cliente);
+            var clienteService = new ClienteService(clienteRepository.Object);
+            var result = await clienteService.InsertAsync(cliente);
 
             // Assert
             result.Should().Be(cliente);
@@ -164,10 +171,12 @@ namespace Triscal.Unit.Tests.Domain
             };
 
             // Moq
-            _clienteService.Setup(r => r.UpdateAsync(cliente)).ReturnsAsync(cliente);
+            var clienteRepository = new Mock<IClienteRepository>();
+            clienteRepository.Setup(x => x.UpdateAsync(cliente)).ReturnsAsync(cliente);
 
             // Act
-            var result = await _clienteService.Object.UpdateAsync(cliente);
+            var clienteService = new ClienteService(clienteRepository.Object);
+            var result = await clienteService.UpdateAsync(cliente);
 
             // Assert
             result.Should().Be(cliente);
@@ -183,10 +192,12 @@ namespace Triscal.Unit.Tests.Domain
             };
 
             // Moq
-            _clienteService.Setup(r => r.DeleteAsync(cliente)).ReturnsAsync(cliente);
+            var clienteRepository = new Mock<IClienteRepository>();
+            clienteRepository.Setup(x => x.DeleteAsync(cliente)).ReturnsAsync(cliente);
 
             // Act
-            var result = await _clienteService.Object.DeleteAsync(cliente);
+            var clienteService = new ClienteService(clienteRepository.Object);
+            var result = await clienteService.DeleteAsync(cliente);
 
             // Assert
             result.Should().Be(cliente);

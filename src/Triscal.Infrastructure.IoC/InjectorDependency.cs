@@ -7,7 +7,6 @@ using Triscal.Application.Services;
 using Triscal.Domain.Interfaces.Repository;
 using Triscal.Domain.Interfaces.Services;
 using Triscal.Domain.Services;
-using Triscal.Infrastructure.Data.Factory;
 using Triscal.Infrastructure.Data.Repository;
 
 namespace Triscal.Infrastructure.IoC
@@ -16,10 +15,6 @@ namespace Triscal.Infrastructure.IoC
     {
         public static void Register(IServiceCollection container)
         {
-            // Factory
-
-            container.AddSingleton<TriscalFactory>();
-
             // Application
 
             container.AddScoped(typeof(IBaseAppService<>), typeof(BaseAppService<>));

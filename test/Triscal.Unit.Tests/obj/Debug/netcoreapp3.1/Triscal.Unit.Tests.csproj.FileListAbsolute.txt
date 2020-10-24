@@ -142,6 +142,7 @@ D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Triscal
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Triscal.Application.pdb
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Triscal.Domain.pdb
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Triscal.Infrastructure.Data.pdb
-D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\obj\Debug\netcoreapp3.1\Triscal.Unit.Tests.csproj.CoreCompileInputs.cache
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\obj\Debug\netcoreapp3.1\Triscal.Unit.Tests.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\obj\Debug\netcoreapp3.1\Triscal.Unit.Tests.pdb
+D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
+D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\obj\Debug\netcoreapp3.1\Triscal.Unit.Tests.csproj.CoreCompileInputs.cache

@@ -4,18 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Triscal.Application.Interfaces;
+using Triscal.Application.Services;
 using Triscal.Domain.Entities;
+using Triscal.Domain.Interfaces.Services;
 using Xunit;
 
 namespace Triscal.Unit.Tests.Application
 {
     public class EnderecoAppServiceTests
     {
-        private readonly Mock<IEnderecoAppService> _enderecoAppService;
-
         public EnderecoAppServiceTests()
         {
-            _enderecoAppService = new Mock<IEnderecoAppService>();
         }
 
         [Fact]
@@ -54,10 +53,12 @@ namespace Triscal.Unit.Tests.Application
             };
 
             // Moq
-            _enderecoAppService.Setup(r => r.GetAllAsync()).ReturnsAsync(enderecos);
+            var enderecoService = new Mock<IEnderecoService>();
+            enderecoService.Setup(x => x.GetAllAsync()).ReturnsAsync(enderecos);
 
             // Act
-            var result = await _enderecoAppService.Object.GetAllAsync();
+            var enderecoAppService = new EnderecoAppService(enderecoService.Object);
+            var result = await enderecoAppService.GetAllAsync();
 
             // Assert
             result.Should().HaveCount(3);
@@ -78,10 +79,12 @@ namespace Triscal.Unit.Tests.Application
             };
 
             // Moq
-            _enderecoAppService.Setup(r => r.GetByIdAsync(Guid.Parse("c0b4493d-75dc-4f8f-8259-d10114831889"))).ReturnsAsync(endereco);
+            var enderecoService = new Mock<IEnderecoService>();
+            enderecoService.Setup(x => x.GetByIdAsync(endereco.Id)).ReturnsAsync(endereco);
 
             // Act
-            var result = await _enderecoAppService.Object.GetByIdAsync(Guid.Parse("c0b4493d-75dc-4f8f-8259-d10114831889"));
+            var enderecoAppService = new EnderecoAppService(enderecoService.Object);
+            var result = await enderecoAppService.GetByIdAsync(endereco.Id);
 
             // Assert
             result.Should().Be(endereco);
@@ -101,10 +104,12 @@ namespace Triscal.Unit.Tests.Application
             };
 
             // Moq
-            _enderecoAppService.Setup(r => r.InsertAsync(endereco)).ReturnsAsync(endereco);
+            var enderecoService = new Mock<IEnderecoService>();
+            enderecoService.Setup(x => x.InsertAsync(endereco)).ReturnsAsync(endereco);
 
             // Act
-            var result = await _enderecoAppService.Object.InsertAsync(endereco);
+            var enderecoAppService = new EnderecoAppService(enderecoService.Object);
+            var result = await enderecoAppService.InsertAsync(endereco);
 
             // Assert
             result.Should().Be(endereco);
@@ -125,10 +130,12 @@ namespace Triscal.Unit.Tests.Application
             };
 
             // Moq
-            _enderecoAppService.Setup(r => r.UpdateAsync(endereco)).ReturnsAsync(endereco);
+            var enderecoService = new Mock<IEnderecoService>();
+            enderecoService.Setup(x => x.UpdateAsync(endereco)).ReturnsAsync(endereco);
 
             // Act
-            var result = await _enderecoAppService.Object.UpdateAsync(endereco);
+            var enderecoAppService = new EnderecoAppService(enderecoService.Object);
+            var result = await enderecoAppService.UpdateAsync(endereco);
 
             // Assert
             result.Should().Be(endereco);
@@ -144,10 +151,12 @@ namespace Triscal.Unit.Tests.Application
             };
 
             // Moq
-            _enderecoAppService.Setup(r => r.DeleteAsync(endereco)).ReturnsAsync(endereco);
+            var enderecoService = new Mock<IEnderecoService>();
+            enderecoService.Setup(x => x.DeleteAsync(endereco)).ReturnsAsync(endereco);
 
             // Act
-            var result = await _enderecoAppService.Object.DeleteAsync(endereco);
+            var enderecoAppService = new EnderecoAppService(enderecoService.Object);
+            var result = await enderecoAppService.DeleteAsync(endereco);
 
             // Assert
             result.Should().Be(endereco);

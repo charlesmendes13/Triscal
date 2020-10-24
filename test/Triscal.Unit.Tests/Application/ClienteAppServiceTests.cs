@@ -4,18 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Triscal.Application.Interfaces;
+using Triscal.Application.Services;
 using Triscal.Domain.Entities;
+using Triscal.Domain.Interfaces.Services;
 using Xunit;
 
 namespace Triscal.Unit.Tests.Application
 {
     public class ClienteAppServiceTests
     {
-        private readonly Mock<IClienteAppService> _clienteAppService;
-
         public ClienteAppServiceTests()
         {
-            _clienteAppService = new Mock<IClienteAppService>();
         }
 
         [Fact]
@@ -74,10 +73,13 @@ namespace Triscal.Unit.Tests.Application
                 }
             };
 
-            _clienteAppService.Setup(r => r.GetAllAsync()).ReturnsAsync(clientes);
+            // Moq
+            var clienteService = new Mock<IClienteService>();
+            clienteService.Setup(x => x.GetAllAsync()).ReturnsAsync(clientes);
 
             // Act
-            var result = await _clienteAppService.Object.GetAllAsync();
+            var clienteAppService = new ClienteAppService(clienteService.Object);
+            var result = await clienteAppService.GetAllAsync();
 
             // Assert
             result.Should().HaveCount(3);
@@ -105,10 +107,12 @@ namespace Triscal.Unit.Tests.Application
             };
 
             // Moq
-            _clienteAppService.Setup(r => r.GetByIdAsync(Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66"))).ReturnsAsync(cliente);
+            var clienteService = new Mock<IClienteService>();
+            clienteService.Setup(x => x.GetByIdAsync(cliente.Id)).ReturnsAsync(cliente);
 
             // Act
-            var result = await _clienteAppService.Object.GetByIdAsync(Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66"));
+            var clienteAppService = new ClienteAppService(clienteService.Object);
+            var result = await clienteAppService.GetByIdAsync(cliente.Id);
 
             // Assert
             result.Should().Be(cliente);
@@ -133,10 +137,12 @@ namespace Triscal.Unit.Tests.Application
             };
 
             // Moq
-            _clienteAppService.Setup(r => r.InsertAsync(cliente)).ReturnsAsync(cliente);
+            var clienteService = new Mock<IClienteService>();
+            clienteService.Setup(x => x.InsertAsync(cliente)).ReturnsAsync(cliente);
 
             // Act
-            var result = await _clienteAppService.Object.InsertAsync(cliente);
+            var clienteAppService = new ClienteAppService(clienteService.Object);
+            var result = await clienteAppService.InsertAsync(cliente);
 
             // Assert
             result.Should().Be(cliente);
@@ -164,10 +170,12 @@ namespace Triscal.Unit.Tests.Application
             };
 
             // Moq
-            _clienteAppService.Setup(r => r.UpdateAsync(cliente)).ReturnsAsync(cliente);
+            var clienteService = new Mock<IClienteService>();
+            clienteService.Setup(x => x.UpdateAsync(cliente)).ReturnsAsync(cliente);
 
             // Act
-            var result = await _clienteAppService.Object.UpdateAsync(cliente);
+            var clienteAppService = new ClienteAppService(clienteService.Object);
+            var result = await clienteAppService.UpdateAsync(cliente);
 
             // Assert
             result.Should().Be(cliente);
@@ -183,10 +191,12 @@ namespace Triscal.Unit.Tests.Application
             };
 
             // Moq
-            _clienteAppService.Setup(r => r.DeleteAsync(cliente)).ReturnsAsync(cliente);
+            var clienteService = new Mock<IClienteService>();
+            clienteService.Setup(x => x.DeleteAsync(cliente)).ReturnsAsync(cliente);
 
             // Act
-            var result = await _clienteAppService.Object.DeleteAsync(cliente);
+            var clienteAppService = new ClienteAppService(clienteService.Object);
+            var result = await clienteAppService.DeleteAsync(cliente);
 
             // Assert
             result.Should().Be(cliente);

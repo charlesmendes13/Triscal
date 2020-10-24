@@ -1,21 +1,23 @@
 ﻿using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Triscal.Domain.Entities;
 using Triscal.Domain.Interfaces.Repository;
+using Triscal.Infrastructure.Data.Context;
+using Triscal.Infrastructure.Data.Repository;
+using Triscal.Unit.Tests.Infrastructure.DbContext;
 using Xunit;
 
 namespace Triscal.Unit.Tests.Infrastructure
 {
     public class EnderecoRepositoryTests
     {
-        private readonly Mock<IEnderecoRepository> _enderecoRepository;
-
         public EnderecoRepositoryTests()
         {
-            _enderecoRepository = new Mock<IEnderecoRepository>();
         }
 
         [Fact]
@@ -53,14 +55,19 @@ namespace Triscal.Unit.Tests.Infrastructure
                 },
             };
 
-            // Moq
-            _enderecoRepository.Setup(r => r.GetAllAsync()).ReturnsAsync(enderecos);
+            using (var database = new InMemoryDbContext())
+            {
+                // Moq
+                var dbContext = database.DbContext();
+                database.Seeds(enderecos);
 
-            // Act
-            var result = await _enderecoRepository.Object.GetAllAsync();
+                // Act
+                var enderecoRepository = new EnderecoRepository(dbContext);
+                var result = await enderecoRepository.GetAllAsync();
 
-            // Assert
-            result.Should().HaveCount(3);
+                // Assert
+                result.Should().HaveCount(3);
+            }
         }
 
         [Fact]
@@ -77,14 +84,19 @@ namespace Triscal.Unit.Tests.Infrastructure
                 ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
 
-            // Moq
-            _enderecoRepository.Setup(r => r.GetByIdAsync(Guid.Parse("c0b4493d-75dc-4f8f-8259-d10114831889"))).ReturnsAsync(endereco);
+            using (var database = new InMemoryDbContext())
+            {
+                // Moq
+                var dbContext = database.DbContext();
+                database.Seeds(endereco);
 
-            // Act
-            var result = await _enderecoRepository.Object.GetByIdAsync(Guid.Parse("c0b4493d-75dc-4f8f-8259-d10114831889"));
+                // Act
+                var enderecoRepository = new EnderecoRepository(dbContext);
+                var result = await enderecoRepository.GetByIdAsync(endereco.Id);
 
-            // Assert
-            result.Should().Be(endereco);
+                // Assert
+                result.Logradouro.Should().Be(endereco.Logradouro);
+            }
         }
 
         [Fact]
@@ -100,14 +112,18 @@ namespace Triscal.Unit.Tests.Infrastructure
                 ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
 
-            // Moq
-            _enderecoRepository.Setup(r => r.InsertAsync(endereco)).ReturnsAsync(endereco);
+            using (var database = new InMemoryDbContext())
+            {
+                // Moq
+                var dbContext = database.DbContext();
 
-            // Act
-            var result = await _enderecoRepository.Object.InsertAsync(endereco);
+                // Act
+                var enderecoRepository = new EnderecoRepository(dbContext);
+                var result = await enderecoRepository.InsertAsync(endereco);
 
-            // Assert
-            result.Should().Be(endereco);
+                // Assert
+                result.Should().Be(endereco);
+            }
         }
 
         [Fact]
@@ -124,14 +140,19 @@ namespace Triscal.Unit.Tests.Infrastructure
                 ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
 
-            // Moq
-            _enderecoRepository.Setup(r => r.UpdateAsync(endereco)).ReturnsAsync(endereco);
+            using (var database = new InMemoryDbContext())
+            {
+                // Moq
+                var dbContext = database.DbContext();
+                database.Seeds(endereco);
 
-            // Act
-            var result = await _enderecoRepository.Object.UpdateAsync(endereco);
+                // Act
+                var enderecoRepository = new EnderecoRepository(dbContext);
+                var result = await enderecoRepository.UpdateAsync(endereco);
 
-            // Assert
-            result.Should().Be(endereco);
+                // Assert
+                result.Should().Be(endereco);
+            }
         }
 
         [Fact]
@@ -140,17 +161,27 @@ namespace Triscal.Unit.Tests.Infrastructure
             // Arrange
             var endereco = new Endereco
             {
-                Id = Guid.Parse("c0b4493d-75dc-4f8f-8259-d10114831889")
+                Id = Guid.Parse("c0b4493d-75dc-4f8f-8259-d10114831889"),
+                Logradouro = "Avenida Atlantica, 4",
+                Bairro = "Copacabana",
+                Cidade = "Rio de Janeiro",
+                Estado = "Rio de Janeiro",
+                ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
 
-            // Moq
-            _enderecoRepository.Setup(r => r.DeleteAsync(endereco)).ReturnsAsync(endereco);
+            using (var database = new InMemoryDbContext())
+            {
+                // Moq
+                var dbContext = database.DbContext();
+                database.Seeds(endereco);
 
-            // Act
-            var result = await _enderecoRepository.Object.DeleteAsync(endereco);
+                // Act
+                var enderecoRepository = new EnderecoRepository(dbContext);
+                var result = await enderecoRepository.DeleteAsync(endereco);
 
-            // Assert
-            result.Should().Be(endereco);
+                // Assert
+                result.Should().Be(endereco);
+            }
         }
     }
 }
