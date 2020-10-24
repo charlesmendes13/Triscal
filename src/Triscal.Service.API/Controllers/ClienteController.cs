@@ -77,6 +77,11 @@ namespace Triscal.Service.API.Controllers
 
             var cliente = await _clienteAppService.UpdateAsync(_mapper.Map<Cliente>(clienteDTO));
 
+            if (cliente == null)
+            {
+                return BadRequest("O CPF já existe!");
+            }
+
             return Ok(_mapper.Map<ClienteDTO>(cliente));
         }
 

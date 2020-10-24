@@ -53,6 +53,11 @@ namespace Triscal.Service.API.Controllers
 
             var endereco = await _enderecoAppService.InsertAsync(_mapper.Map<Endereco>(enderecoDTO));
 
+            if (endereco == null)
+            {
+                return BadRequest("O Cliente já existe!");
+            }
+
             return Ok(_mapper.Map<EnderecoDTO>(endereco));
         }
 
@@ -71,6 +76,11 @@ namespace Triscal.Service.API.Controllers
             }
 
             var endereco = await _enderecoAppService.UpdateAsync(_mapper.Map<Endereco>(enderecoDTO));
+
+            if (endereco == null)
+            {
+                return BadRequest("O Cliente já existe!");
+            }
 
             return Ok(_mapper.Map<EnderecoDTO>(endereco));
         }
