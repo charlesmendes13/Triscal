@@ -44,14 +44,14 @@ namespace Triscal.Service.API.Controllers
 
         // POST api/<ClienteController>
         [HttpPost]
-        public async Task<ActionResult<ClienteDTO>> Post(ClienteDTO clienteDTO)
+        public async Task<ActionResult<ClienteDTO>> Post(ClienteCreateDTO clienteCreateDTO)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(clienteDTO);
+                return BadRequest(clienteCreateDTO);
             }
 
-            var cliente = await _clienteAppService.InsertAsync(_mapper.Map<Cliente>(clienteDTO));
+            var cliente = await _clienteAppService.InsertAsync(_mapper.Map<Cliente>(clienteCreateDTO));
 
             if (cliente == null)
             {
@@ -63,19 +63,19 @@ namespace Triscal.Service.API.Controllers
 
         // PUT api/<ClienteController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<ClienteDTO>> Put(Guid id, ClienteDTO clienteDTO)
+        public async Task<ActionResult<ClienteDTO>> Put(Guid id, ClienteUpdateDTO clienteUpdateDTO)
         {
-            if (id != clienteDTO.Id)
+            if (id != clienteUpdateDTO.Id)
             {
                 return NotFound();
             }
 
             if (!ModelState.IsValid)
             {
-                return BadRequest(clienteDTO);
+                return BadRequest(clienteUpdateDTO);
             }
 
-            var cliente = await _clienteAppService.UpdateAsync(_mapper.Map<Cliente>(clienteDTO));
+            var cliente = await _clienteAppService.UpdateAsync(_mapper.Map<Cliente>(clienteUpdateDTO));
 
             if (cliente == null)
             {

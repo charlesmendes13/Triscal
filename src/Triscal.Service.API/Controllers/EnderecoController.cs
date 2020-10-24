@@ -44,14 +44,14 @@ namespace Triscal.Service.API.Controllers
 
         // POST api/<EnderecoController>
         [HttpPost]
-        public async Task<ActionResult<EnderecoDTO>> Post(EnderecoDTO enderecoDTO)
+        public async Task<ActionResult<EnderecoDTO>> Post(EnderecoCreateDTO enderecoCreateDTO)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(enderecoDTO);
+                return BadRequest(enderecoCreateDTO);
             }
 
-            var endereco = await _enderecoAppService.InsertAsync(_mapper.Map<Endereco>(enderecoDTO));
+            var endereco = await _enderecoAppService.InsertAsync(_mapper.Map<Endereco>(enderecoCreateDTO));
 
             if (endereco == null)
             {
@@ -63,19 +63,19 @@ namespace Triscal.Service.API.Controllers
 
         // PUT api/<EnderecoController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<EnderecoDTO>> Put(Guid id, EnderecoDTO enderecoDTO)
+        public async Task<ActionResult<EnderecoDTO>> Put(Guid id, EnderecoUpdateDTO enderecoUpdateDTO)
         {
-            if (id != enderecoDTO.Id)
+            if (id != enderecoUpdateDTO.Id)
             {
                 return NotFound();
             }
 
             if (!ModelState.IsValid)
             {
-                return BadRequest(enderecoDTO);
+                return BadRequest(enderecoUpdateDTO);
             }
 
-            var endereco = await _enderecoAppService.UpdateAsync(_mapper.Map<Endereco>(enderecoDTO));
+            var endereco = await _enderecoAppService.UpdateAsync(_mapper.Map<Endereco>(enderecoUpdateDTO));
 
             if (endereco == null)
             {

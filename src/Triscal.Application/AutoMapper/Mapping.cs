@@ -15,8 +15,23 @@ namespace Triscal.Application.AutoMapper
             CreateMap<Cliente, ClienteDTO>()
                 .ForMember(dto => dto.DataNascimento, opt => opt.MapFrom(entity => entity.DataNascimento.ToString("dd/MM/yyyy")));
 
+            CreateMap<ClienteCreateDTO, Cliente>();
+            CreateMap<Cliente, ClienteCreateDTO>();
+
+            CreateMap<ClienteUpdateDTO, Cliente>();
+            CreateMap<Cliente, ClienteUpdateDTO>();
+
+            CreateMap<ClienteEnderecoCreateDTO, Endereco>();
+            CreateMap<Endereco, ClienteEnderecoCreateDTO>();
+
             CreateMap<EnderecoDTO, Endereco>();
             CreateMap<Endereco, EnderecoDTO>();
+
+            CreateMap<EnderecoCreateDTO, Endereco>();
+            CreateMap<Endereco, EnderecoCreateDTO>();
+
+            CreateMap<EnderecoUpdateDTO, Endereco>();
+            CreateMap<Endereco, EnderecoUpdateDTO>();
         }
     }
 }
