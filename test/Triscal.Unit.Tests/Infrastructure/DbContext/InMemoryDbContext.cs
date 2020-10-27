@@ -48,6 +48,8 @@ namespace Triscal.Unit.Tests.Infrastructure.DbContext
 
         public void Dispose()
         {
+            dbContext.Database.EnsureDeleted();
+
             dbContext.Dispose();
         }
     }
