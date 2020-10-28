@@ -59,7 +59,7 @@ namespace Triscal.Unit.Tests.Infrastructure
             {
                 // Moq
                 var dbContext = database.DbContext();
-                database.Seeds(enderecos);
+                database.Seed(enderecos);
 
                 // Act
                 var enderecoRepository = new EnderecoRepository(dbContext);
@@ -88,7 +88,7 @@ namespace Triscal.Unit.Tests.Infrastructure
             {
                 // Moq
                 var dbContext = database.DbContext();
-                database.Seeds(endereco);
+                database.Seed(endereco);
 
                 // Act
                 var enderecoRepository = new EnderecoRepository(dbContext);
@@ -144,7 +144,7 @@ namespace Triscal.Unit.Tests.Infrastructure
             {
                 // Moq
                 var dbContext = database.DbContext();
-                database.Seeds(endereco);
+                database.Seed(endereco);
 
                 // Act
                 var enderecoRepository = new EnderecoRepository(dbContext);
@@ -173,7 +173,7 @@ namespace Triscal.Unit.Tests.Infrastructure
             {
                 // Moq
                 var dbContext = database.DbContext();
-                database.Seeds(endereco);
+                database.Seed(endereco);
 
                 // Act
                 var enderecoRepository = new EnderecoRepository(dbContext);

@@ -23,6 +23,8 @@ namespace Triscal.Unit.Tests.Infrastructure.DbContext
                 .Options;
 
             dbContext = new TriscalContext(options);
+
+            dbContext.Database.EnsureCreated();
         }
 
         public TriscalContext DbContext()
@@ -30,10 +32,8 @@ namespace Triscal.Unit.Tests.Infrastructure.DbContext
             return dbContext;
         }
 
-        public void Seeds(object entity)
+        public void Seed(object entity)
         {
-            dbContext.Database.EnsureCreated();
-
             if (entity is ICollection)
             {
                 dbContext.AddRange(((IEnumerable)entity).Cast<object>());

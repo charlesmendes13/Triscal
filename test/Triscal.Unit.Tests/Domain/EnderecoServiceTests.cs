@@ -13,8 +13,13 @@ namespace Triscal.Unit.Tests.Domain
 {
     public class EnderecoServiceTests
     {
+        private readonly Mock<IEnderecoRepository> enderecoRepository;
+        private readonly EnderecoService enderecoService;
+
         public EnderecoServiceTests()
         {
+            enderecoRepository = new Mock<IEnderecoRepository>();
+            enderecoService = new EnderecoService(enderecoRepository.Object);
         }
 
         [Fact]
@@ -53,11 +58,9 @@ namespace Triscal.Unit.Tests.Domain
             };
 
             // Moq
-            var enderecoRepository = new Mock<IEnderecoRepository>();
             enderecoRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(enderecos);
 
             // Act
-            var enderecoService = new EnderecoService(enderecoRepository.Object);
             var result = await enderecoService.GetAllAsync();
 
             // Assert
@@ -79,11 +82,9 @@ namespace Triscal.Unit.Tests.Domain
             };
 
             // Moq
-            var enderecoRepository = new Mock<IEnderecoRepository>();
             enderecoRepository.Setup(x => x.GetByIdAsync(endereco.Id)).ReturnsAsync(endereco);
 
             // Act
-            var enderecoService = new EnderecoService(enderecoRepository.Object);
             var result = await enderecoService.GetByIdAsync(endereco.Id);
 
             // Assert
@@ -104,11 +105,9 @@ namespace Triscal.Unit.Tests.Domain
             };
 
             // Moq
-            var enderecoRepository = new Mock<IEnderecoRepository>();
             enderecoRepository.Setup(x => x.InsertAsync(endereco)).ReturnsAsync(endereco);
 
             // Act
-            var enderecoService = new EnderecoService(enderecoRepository.Object);
             var result = await enderecoService.InsertAsync(endereco);
 
             // Assert
@@ -130,11 +129,9 @@ namespace Triscal.Unit.Tests.Domain
             };
 
             // Moq
-            var enderecoRepository = new Mock<IEnderecoRepository>();
             enderecoRepository.Setup(x => x.UpdateAsync(endereco)).ReturnsAsync(endereco);
 
             // Act
-            var enderecoService = new EnderecoService(enderecoRepository.Object);
             var result = await enderecoService.UpdateAsync(endereco);
 
             // Assert
@@ -147,15 +144,18 @@ namespace Triscal.Unit.Tests.Domain
             // Arrange
             var endereco = new Endereco
             {
-                Id = Guid.Parse("c0b4493d-75dc-4f8f-8259-d10114831889")                
+                Id = Guid.Parse("c0b4493d-75dc-4f8f-8259-d10114831889"),
+                Logradouro = "Avenida Atlantica, 4",
+                Bairro = "Copacabana",
+                Cidade = "Rio de Janeiro",
+                Estado = "Rio de Janeiro",
+                ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
 
             // Moq
-            var enderecoRepository = new Mock<IEnderecoRepository>();
             enderecoRepository.Setup(x => x.DeleteAsync(endereco)).ReturnsAsync(endereco);
 
             // Act
-            var enderecoService = new EnderecoService(enderecoRepository.Object);
             var result = await enderecoService.DeleteAsync(endereco);
 
             // Assert

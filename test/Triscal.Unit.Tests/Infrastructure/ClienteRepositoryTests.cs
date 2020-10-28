@@ -81,7 +81,7 @@ namespace Triscal.Unit.Tests.Infrastructure
             {
                 // Moq
                 var dbContext = database.DbContext();
-                database.Seeds(clientes);
+                database.Seed(clientes);
 
                 // Act
                 var clienteRepository = new ClienteRepository(dbContext);
@@ -117,7 +117,7 @@ namespace Triscal.Unit.Tests.Infrastructure
             {
                 // Moq
                 var dbContext = database.DbContext();
-                database.Seeds(cliente);
+                database.Seed(cliente);
 
                 // Act
                 var clienteRepository = new ClienteRepository(dbContext);
@@ -185,7 +185,7 @@ namespace Triscal.Unit.Tests.Infrastructure
             {
                 // Moq
                 var dbContext = database.DbContext();
-                database.Seeds(cliente);
+                database.Seed(cliente);
 
                 // Act
                 var clienteRepository = new ClienteRepository(dbContext);
@@ -221,7 +221,7 @@ namespace Triscal.Unit.Tests.Infrastructure
             {
                 // Moq
                 var dbContext = database.DbContext();
-                database.Seeds(cliente);
+                database.Seed(cliente);
 
                 // Act
                 var clienteRepository = new ClienteRepository(dbContext);
