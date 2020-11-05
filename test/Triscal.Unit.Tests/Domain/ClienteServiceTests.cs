@@ -2,22 +2,26 @@
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Triscal.Domain.Entities;
 using Triscal.Domain.Interfaces.Repository;
 using Triscal.Domain.Interfaces.Services;
 using Triscal.Domain.Services;
+using Triscal.Domain.Validation;
 using Xunit;
 
 namespace Triscal.Unit.Tests.Domain
 {
     public class ClienteServiceTests
     {
+        private readonly ClienteValidation clienteValidation;
         private readonly Mock<IClienteRepository> clienteRepository;
         private readonly ClienteService clienteService;
 
         public ClienteServiceTests()
         {
+            clienteValidation = new ClienteValidation();
             clienteRepository = new Mock<IClienteRepository>();
             clienteService = new ClienteService(clienteRepository.Object);
         }
@@ -78,6 +82,12 @@ namespace Triscal.Unit.Tests.Domain
                 }
             };
 
+            // Valid
+            foreach (var cliente in clientes)
+            {
+                clienteValidation.Validate(cliente).Errors.Should().BeNullOrEmpty();
+            }
+
             // Moq
             clienteRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(clientes);
 
@@ -85,7 +95,7 @@ namespace Triscal.Unit.Tests.Domain
             var result = await clienteService.GetAllAsync();
 
             // Assert
-            result.Should().HaveCount(3);          
+            result.Should().HaveCount(3);
         }
 
         [Fact]
@@ -108,6 +118,9 @@ namespace Triscal.Unit.Tests.Domain
                     ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
                 }
             };
+
+            // Valid
+            clienteValidation.Validate(cliente).Errors.Should().BeNullOrEmpty();
 
             // Moq
             clienteRepository.Setup(x => x.GetByIdAsync(cliente.Id)).ReturnsAsync(cliente);
@@ -136,6 +149,9 @@ namespace Triscal.Unit.Tests.Domain
                     Estado = "Rio de Janeiro",
                 }
             };
+
+            // Valid
+            clienteValidation.Validate(cliente).Errors.Should().BeNullOrEmpty();
 
             // Moq
             clienteRepository.Setup(x => x.InsertAsync(cliente)).ReturnsAsync(cliente);
@@ -168,6 +184,9 @@ namespace Triscal.Unit.Tests.Domain
                 }
             };
 
+            // Valid
+            clienteValidation.Validate(cliente).Errors.Should().BeNullOrEmpty();
+
             // Moq
             clienteRepository.Setup(x => x.UpdateAsync(cliente)).ReturnsAsync(cliente);
 
@@ -198,6 +217,9 @@ namespace Triscal.Unit.Tests.Domain
                     ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
                 }
             };
+
+            // Valid
+            clienteValidation.Validate(cliente).Errors.Should().BeNullOrEmpty();
 
             // Moq
             clienteRepository.Setup(x => x.DeleteAsync(cliente)).ReturnsAsync(cliente);

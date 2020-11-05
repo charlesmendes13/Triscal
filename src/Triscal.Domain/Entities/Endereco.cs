@@ -8,16 +8,12 @@ namespace Triscal.Domain.Entities
 {
     public class Endereco : Base
     {
-        [Required]
         public virtual string Logradouro { get; set; }
 
-        [Required]
         public virtual string Bairro { get; set; }
 
-        [Required]
         public virtual string Cidade { get; set; }
 
-        [Required]
         public virtual string Estado { get; set; }
 
         [ForeignKey("User")]

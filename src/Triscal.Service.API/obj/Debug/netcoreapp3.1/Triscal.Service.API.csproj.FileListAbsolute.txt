@@ -9,7 +9,6 @@ D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\Triscal
 D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\Triscal.Service.API.pdb
 D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\AutoMapper.dll
 D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\Dapper.dll
 D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
@@ -158,9 +157,6 @@ D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\Triscal
 D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.csprojAssemblyReference.cache
 D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.AssemblyInfoInputs.cache
 D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.AssemblyInfo.cs
-D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.csproj.CoreCompileInputs.cache
-D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.MvcApplicationPartsAssemblyInfo.cs
-D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.MvcApplicationPartsAssemblyInfo.cache
 D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.RazorTargetAssemblyInfo.cache
 D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.csproj.CopyComplete
 D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\staticwebassets\Triscal.Service.API.StaticWebAssets.Manifest.cache
@@ -168,3 +164,9 @@ D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\staticw
 D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.dll
 D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.pdb
 D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.genruntimeconfig.cache
+D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
+D:\Visual Studio\Triscal\src\Triscal.Service.API\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
+D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.csproj.CoreCompileInputs.cache
+D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.MvcApplicationPartsAssemblyInfo.cs
+D:\Visual Studio\Triscal\src\Triscal.Service.API\obj\Debug\netcoreapp3.1\Triscal.Service.API.MvcApplicationPartsAssemblyInfo.cache

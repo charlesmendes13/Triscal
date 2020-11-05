@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "kIB/4MVHsyRrAlGNYB4AoUCzbATefiCRaTyjhjC4QoXAV7JeB0OvovNYfu4B9tPPIVSDz7AT1zsmEcgWN6T3hg==",
+  "dgSpecHash": "t0jJfXeCheBF5cO6Th8w6sHZ8xuLAy3Wed2aCA/gDIweMOX1uq/gMZ4SB9cUiU+07FrKQbyLWy1D3te8CVYRVg==",
   "success": true,
   "projectFilePath": "D:\\Visual Studio\\Triscal\\src\\Triscal.Domain\\Triscal.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Charles\\.nuget\\packages\\fluentvalidation\\9.2.0\\fluentvalidation.9.2.0.nupkg.sha512",
+    "C:\\Users\\Charles\\.nuget\\packages\\fluentvalidation.aspnetcore\\9.2.0\\fluentvalidation.aspnetcore.9.2.0.nupkg.sha512",
+    "C:\\Users\\Charles\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\9.2.0\\fluentvalidation.dependencyinjectionextensions.9.2.0.nupkg.sha512",
+    "C:\\Users\\Charles\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

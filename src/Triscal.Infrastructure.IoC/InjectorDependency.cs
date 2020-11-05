@@ -1,12 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Triscal.Application.Interfaces;
 using Triscal.Application.Services;
+using Triscal.Domain.Entities;
 using Triscal.Domain.Interfaces.Repository;
 using Triscal.Domain.Interfaces.Services;
 using Triscal.Domain.Services;
+using Triscal.Domain.Validation;
 using Triscal.Infrastructure.Data.Repository;
 
 namespace Triscal.Infrastructure.IoC
@@ -32,6 +35,11 @@ namespace Triscal.Infrastructure.IoC
             container.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             container.AddScoped<IClienteRepository, ClienteRepository>();
             container.AddScoped<IEnderecoRepository, EnderecoRepository>();
+
+            // Validator
+
+            container.AddTransient<IValidator<Cliente>, ClienteValidation>();
+            container.AddTransient<IValidator<Endereco>, EnderecoValidation>();
         }
     }
 }

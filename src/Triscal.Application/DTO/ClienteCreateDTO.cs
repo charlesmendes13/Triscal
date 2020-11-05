@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using Triscal.Application.Helpers;
+using Triscal.Application.Attributes;
 
 namespace Triscal.Application.DTO
 {
@@ -21,7 +21,7 @@ namespace Triscal.Application.DTO
         [Required(ErrorMessage = "O CPF não pode ser nulo")]
         [MaxLength(11, ErrorMessage = "O CPF não pode ter mais que 11 caracteres")]
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "O CPF deve possuir somente números")]
-        [ValidationCPF(ErrorMessage = "O CPF é inválido")]
+        [ValidarCPF(ErrorMessage = "O CPF é inválido")]
         public string Cpf { get; set; }
 
         public ClienteEnderecoCreateDTO Endereco { get; set; }

@@ -98,7 +98,6 @@ D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Triscal
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\AutoMapper.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Castle.Core.dll
-D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Dapper.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
@@ -128,7 +127,6 @@ D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\System.
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
-D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
@@ -146,3 +144,6 @@ D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\obj\Debug\netcoreapp3.1\Triscal
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\obj\Debug\netcoreapp3.1\Triscal.Unit.Tests.pdb
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
 D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\obj\Debug\netcoreapp3.1\Triscal.Unit.Tests.csproj.CoreCompileInputs.cache
+D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
+D:\Visual Studio\Triscal\test\Triscal.Unit.Tests\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll

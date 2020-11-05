@@ -14,17 +14,17 @@ namespace Triscal.Application.DTO
 
         [Required(ErrorMessage = "O Bairro não pode ser nulo")]
         [MaxLength(30, ErrorMessage = "O Bairro não pode ter mais que 30 caracteres")]
-        [RegularExpression(@"^[ a-zA-ZÀ-ú0-9]*$", ErrorMessage = "O Bairro somente pode possuir letras, números, ',' e '-'")]
+        [RegularExpression(@"^[ a-zA-ZÀ-ú0-9]*$", ErrorMessage = "O Bairro somente pode possuir letras e números")]
         public string Bairro { get; set; }
 
         [Required(ErrorMessage = "A Cidade não pode ser nula")]
         [MaxLength(30, ErrorMessage = "O Cidade não pode ter mais que 30 caracteres")]
-        [RegularExpression(@"^[ a-zA-ZÀ-ú0-9]*$", ErrorMessage = "A Cidade somente pode possuir letras, números, ',' e '-'")]
+        [RegularExpression(@"^[ a-zA-ZÀ-ú0-9]*$", ErrorMessage = "A Cidade somente pode possuir letras e números")]
         public string Cidade { get; set; }
 
         [Required(ErrorMessage = "O Estado não pode ser nulo")]
         [MaxLength(30, ErrorMessage = "O Estado não pode ter mais que 30 caracteres")]
-        [RegularExpression(@"^[ a-zA-ZÀ-ú0-9]*$", ErrorMessage = "O Estado somente pode possuir letras, números, ',' e '-'")]
+        [RegularExpression(@"^[ a-zA-ZÀ-ú0-9]*$", ErrorMessage = "O Estado somente pode possuir letras e números")]
         public string Estado { get; set; }
 
         [Required(ErrorMessage = "O ClienteId não pode ser nulo")]

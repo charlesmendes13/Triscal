@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Triscal.Domain.Entities;
 using Triscal.Domain.Interfaces.Repository;
+using Triscal.Domain.Validation;
 using Triscal.Infrastructure.Data.Context;
 using Triscal.Infrastructure.Data.Repository;
 using Triscal.Unit.Tests.Infrastructure.DbContext;
@@ -17,8 +18,11 @@ namespace Triscal.Unit.Tests.Infrastructure
 {
     public class ClienteRepositoryTests
     {
+        private readonly ClienteValidation clienteValidation;
+
         public ClienteRepositoryTests()
         {
+            clienteValidation = new ClienteValidation();
         }
 
         [Fact]
@@ -77,6 +81,12 @@ namespace Triscal.Unit.Tests.Infrastructure
                 }
             };
 
+            // Valid
+            foreach (var cliente in clientes)
+            {
+                clienteValidation.Validate(cliente).Errors.Should().BeNullOrEmpty();
+            }
+
             using (var database = new InMemoryDbContext())
             {
                 // Moq
@@ -113,6 +123,9 @@ namespace Triscal.Unit.Tests.Infrastructure
                 }
             };
 
+            // Valid
+            clienteValidation.Validate(cliente).Errors.Should().BeNullOrEmpty();
+
             using (var database = new InMemoryDbContext())
             {
                 // Moq
@@ -145,6 +158,9 @@ namespace Triscal.Unit.Tests.Infrastructure
                     Estado = "Rio de Janeiro",
                 }
             };
+
+            // Valid
+            clienteValidation.Validate(cliente).Errors.Should().BeNullOrEmpty();
 
             using (var database = new InMemoryDbContext())
             {
@@ -181,6 +197,9 @@ namespace Triscal.Unit.Tests.Infrastructure
                 }
             };
 
+            // Valid
+            clienteValidation.Validate(cliente).Errors.Should().BeNullOrEmpty();
+
             using (var database = new InMemoryDbContext())
             {
                 // Moq
@@ -216,6 +235,9 @@ namespace Triscal.Unit.Tests.Infrastructure
                     ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
                 }
             };
+
+            // Valid
+            clienteValidation.Validate(cliente).Errors.Should().BeNullOrEmpty();
 
             using (var database = new InMemoryDbContext())
             {

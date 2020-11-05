@@ -7,17 +7,20 @@ using Triscal.Application.Interfaces;
 using Triscal.Application.Services;
 using Triscal.Domain.Entities;
 using Triscal.Domain.Interfaces.Services;
+using Triscal.Domain.Validation;
 using Xunit;
 
 namespace Triscal.Unit.Tests.Application
 {
     public class EnderecoAppServiceTests
     {
+        private readonly EnderecoValidation enderecoValidation;
         private readonly Mock<IEnderecoService> enderecoService;
         private readonly EnderecoAppService enderecoAppService;
 
         public EnderecoAppServiceTests()
         {
+            enderecoValidation = new EnderecoValidation();
             enderecoService = new Mock<IEnderecoService>();
             enderecoAppService = new EnderecoAppService(enderecoService.Object);
         }
@@ -57,6 +60,12 @@ namespace Triscal.Unit.Tests.Application
                 },
             };
 
+            // Valid
+            foreach (var endereco in enderecos)
+            {
+                enderecoValidation.Validate(endereco).Errors.Should().BeNullOrEmpty();
+            }
+
             // Moq
             enderecoService.Setup(x => x.GetAllAsync()).ReturnsAsync(enderecos);
 
@@ -81,6 +90,9 @@ namespace Triscal.Unit.Tests.Application
                 ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
 
+            // Valid
+            enderecoValidation.Validate(endereco).Errors.Should().BeNullOrEmpty();
+
             // Moq
             enderecoService.Setup(x => x.GetByIdAsync(endereco.Id)).ReturnsAsync(endereco);
 
@@ -103,6 +115,9 @@ namespace Triscal.Unit.Tests.Application
                 Estado = "Rio de Janeiro",
                 ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
+
+            // Valid
+            enderecoValidation.Validate(endereco).Errors.Should().BeNullOrEmpty();
 
             // Moq
             enderecoService.Setup(x => x.InsertAsync(endereco)).ReturnsAsync(endereco);
@@ -128,6 +143,9 @@ namespace Triscal.Unit.Tests.Application
                 ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
 
+            // Valid
+            enderecoValidation.Validate(endereco).Errors.Should().BeNullOrEmpty();
+
             // Moq
             enderecoService.Setup(x => x.UpdateAsync(endereco)).ReturnsAsync(endereco);
 
@@ -151,6 +169,9 @@ namespace Triscal.Unit.Tests.Application
                 Estado = "Rio de Janeiro",
                 ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
+
+            // Valid
+            enderecoValidation.Validate(endereco).Errors.Should().BeNullOrEmpty();
 
             // Moq
             enderecoService.Setup(x => x.DeleteAsync(endereco)).ReturnsAsync(endereco);

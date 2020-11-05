@@ -1,25 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Triscal.Application.Helpers
+namespace Triscal.Domain.Extensions
 {
-    internal class ValidationCPFAttribute : ValidationAttribute
+    public static class ValidarExtension
     {
-        public override bool IsValid(object value)
-        {
-            if (value == null || string.IsNullOrEmpty(value.ToString()))
-            {
-                return true;
-            }
-
-            bool result = ValidaCPF(value.ToString());
-
-            return result;
-        }
-
-        public static bool ValidaCPF(string cpf)
+        public static bool ValidarCpf(this string cpf)
         {
             string valor = cpf.Replace(".", "");
             valor = valor.Replace("-", "");

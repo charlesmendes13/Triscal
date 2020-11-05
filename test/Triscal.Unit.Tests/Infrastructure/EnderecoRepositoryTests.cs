@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Triscal.Domain.Entities;
 using Triscal.Domain.Interfaces.Repository;
+using Triscal.Domain.Validation;
 using Triscal.Infrastructure.Data.Context;
 using Triscal.Infrastructure.Data.Repository;
 using Triscal.Unit.Tests.Infrastructure.DbContext;
@@ -16,8 +17,11 @@ namespace Triscal.Unit.Tests.Infrastructure
 {
     public class EnderecoRepositoryTests
     {
+        private readonly EnderecoValidation enderecoValidation;
+
         public EnderecoRepositoryTests()
         {
+            enderecoValidation = new EnderecoValidation();
         }
 
         [Fact]
@@ -55,6 +59,12 @@ namespace Triscal.Unit.Tests.Infrastructure
                 },
             };
 
+            // Valid
+            foreach (var endereco in enderecos)
+            {
+                enderecoValidation.Validate(endereco).Errors.Should().BeNullOrEmpty();
+            }
+
             using (var database = new InMemoryDbContext())
             {
                 // Moq
@@ -84,6 +94,9 @@ namespace Triscal.Unit.Tests.Infrastructure
                 ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
 
+            // Valid
+            enderecoValidation.Validate(endereco).Errors.Should().BeNullOrEmpty();
+
             using (var database = new InMemoryDbContext())
             {
                 // Moq
@@ -111,6 +124,9 @@ namespace Triscal.Unit.Tests.Infrastructure
                 Estado = "Rio de Janeiro",
                 ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
+
+            // Valid
+            enderecoValidation.Validate(endereco).Errors.Should().BeNullOrEmpty();
 
             using (var database = new InMemoryDbContext())
             {
@@ -140,6 +156,9 @@ namespace Triscal.Unit.Tests.Infrastructure
                 ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
 
+            // Valid
+            enderecoValidation.Validate(endereco).Errors.Should().BeNullOrEmpty();
+
             using (var database = new InMemoryDbContext())
             {
                 // Moq
@@ -168,6 +187,9 @@ namespace Triscal.Unit.Tests.Infrastructure
                 Estado = "Rio de Janeiro",
                 ClienteId = Guid.Parse("3ce3c638-88fb-492a-b6db-ae3ac3910d66")
             };
+
+            // Valid
+            enderecoValidation.Validate(endereco).Errors.Should().BeNullOrEmpty();
 
             using (var database = new InMemoryDbContext())
             {
